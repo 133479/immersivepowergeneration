@@ -61,7 +61,8 @@ public class ImmersivePowerGeneration {
         }
 
         if(event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS){
-            event.accept(ModBlocks.TEST_BLOCK);
+            event.accept(ModBlocks.TESTBLOCK);
+            event.accept(ModBlocks.TESTBLOCKENTITY);
         }
     }
 

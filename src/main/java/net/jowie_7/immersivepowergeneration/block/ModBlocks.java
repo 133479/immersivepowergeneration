@@ -1,9 +1,8 @@
 package net.jowie_7.immersivepowergeneration.block;
 
 import net.jowie_7.immersivepowergeneration.ImmersivePowerGeneration;
-import net.jowie_7.immersivepowergeneration.item.ModItems;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -11,24 +10,27 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-import java.util.function.Supplier;
-
 public class ModBlocks {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(ImmersivePowerGeneration.MOD_ID);
 
-    public static final DeferredBlock<Block> TEST_BLOCK = registerBlock("test_block",
-            () -> new Block(BlockBehaviour.Properties.of().
-                    strength(4f).sound(SoundType.ANVIL)));
+    public static final DeferredBlock<Block> TESTBLOCK = BLOCKS.register(
+            "testblock",
+            registryName -> new Block(BlockBehaviour.Properties.of()
+                    .setId(ResourceKey.create(Registries.BLOCK, registryName))
+                    .destroyTime(1f)
+                    .explosionResistance(5f)
+                    .sound(SoundType.ANVIL)
+                    .lightLevel(state -> 7)
+            )
+    );
 
-    private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
-        DeferredBlock<T> toReturn = BLOCKS.register(name, block);
-        registerBlockItem(name, toReturn);
-        return toReturn;
-    }
-
-    private static <T extends Block> void registerBlockItem(String name, DeferredBlock<T> block) {
-        ModItems.ITEMS.register(name,() -> new BlockItem(block.get(), new Item.Properties()));
-    }
+    public static final DeferredBlock<Block> TESTBLOCKENTITY = BLOCKS.register(
+            "testblockentity",
+            registryName -> new Block(BlockBehaviour.Properties.of()
+                    .setId(ResourceKey.create(Registries.BLOCK, registryName))
+                    .noCollision()
+            )
+    );
 
     public static void register(IEventBus eventBus) {
         BLOCKS.register(eventBus);
