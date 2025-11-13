@@ -1,6 +1,7 @@
 package net.jowie_7.immersivepowergeneration;
 
 import net.jowie_7.immersivepowergeneration.block.ModBlocks;
+import net.jowie_7.immersivepowergeneration.block.entity.ModBlockEntities;
 import net.jowie_7.immersivepowergeneration.item.ModItems;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
@@ -33,7 +34,7 @@ public class ImmersivePowerGeneration {
     public ImmersivePowerGeneration(IEventBus modEventBus, ModContainer modContainer) {
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
-
+        ModBlockEntities.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in.
         // Note that this is necessary if and only if we want *this* class (ExampleMod) to respond directly to events.
