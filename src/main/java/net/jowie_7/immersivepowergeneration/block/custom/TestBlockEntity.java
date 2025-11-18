@@ -20,36 +20,36 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
-public class TestBlockEntity extends BaseEntityBlock {
-    public static final VoxelShape SHAPE = Block.box(2,0,2,14,13,14);
-    public static final MapCodec<TestBlockEntity> CODEC = simpleCodec(TestBlockEntity::new);
-
-
-    public TestBlockEntity(Properties properties) {
-        super (properties);
-    }
-
-    @Override
-    protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        return SHAPE;
-    }
-
-    @Override
-    protected MapCodec<? extends BaseEntityBlock> codec() {
-        return CODEC;
-    }
-
-    /* BLOCK ENTITY */
-
-    @Override
-    protected RenderShape getRenderShape(BlockState state) {
-        return RenderShape.MODEL;
-    }
-
-    @Nullable
-    @Override
-    public BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState){
-        return new TestBlockEntityEntity(blockPos, blockState);
-    }
+public class TestBlockEntity /* extends BaseEntityBlock */ {
+//    public static final VoxelShape SHAPE = Block.box(2,0,2,14,13,14);
+//    public static final MapCodec<TestBlockEntity> CODEC = simpleCodec(TestBlockEntity::new);
+//
+//
+//    public TestBlockEntity(Properties properties) {
+//        super (properties);
+//    }
+//
+//    @Override
+//    protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+//        return SHAPE;
+//    }
+//
+//    @Override
+//    protected MapCodec<? extends BaseEntityBlock> codec() {
+//        return CODEC;
+//    }
+//
+//    /* BLOCK ENTITY */
+//
+//    @Override
+//    protected RenderShape getRenderShape(BlockState state) {
+//        return RenderShape.MODEL;
+//    }
+//
+//    @Nullable
+//    @Override
+//    public BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState){
+//        return new TestBlockEntityEntity(blockPos, blockState);
+//    }
 
 }

@@ -1,6 +1,7 @@
 package net.jowie_7.immersivepowergeneration;
 
 import net.jowie_7.immersivepowergeneration.block.ModBlocks;
+import net.jowie_7.immersivepowergeneration.block.entity.BoxBlockEntity;
 import net.jowie_7.immersivepowergeneration.block.entity.ModBlockEntities;
 import net.jowie_7.immersivepowergeneration.item.ModItems;
 import net.minecraft.core.Registry;
@@ -34,7 +35,6 @@ public class ImmersivePowerGeneration {
     public ImmersivePowerGeneration(IEventBus modEventBus, ModContainer modContainer) {
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
-        ModBlockEntities.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in.
         // Note that this is necessary if and only if we want *this* class (ExampleMod) to respond directly to events.
@@ -43,6 +43,9 @@ public class ImmersivePowerGeneration {
 
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
+        BoxBlockEntity.register(modEventBus);
+
+        //ModBlockEntities.register(modEventBus);
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
@@ -63,7 +66,7 @@ public class ImmersivePowerGeneration {
 
         if(event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS){
             event.accept(ModBlocks.TESTBLOCK);
-            event.accept(ModBlocks.TESTBLOCKENTITY);
+            event.accept(ModBlocks.BOX_BLOCK);
         }
     }
 

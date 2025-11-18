@@ -18,6 +18,11 @@ public class ModItems {
             ModBlocks.TESTBLOCK
     );
 
+    public static final DeferredItem<BlockItem> BOXBLOCKITEM = ITEMS.registerSimpleBlockItem(
+            "box",
+            ModBlocks.BOX_BLOCK
+    );
+
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }
