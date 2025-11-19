@@ -53,7 +53,7 @@ public class BoxBlockEntity extends BaseContainerBlockEntity {
 
     @Override
     protected AbstractContainerMenu createMenu(int containerId, Inventory inventory) {
-        return ;
+        return null;
     }
 
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITY_TYPES =
