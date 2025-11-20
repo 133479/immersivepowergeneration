@@ -19,41 +19,10 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import java.awt.*;
 import java.util.function.Supplier;
 
-public class BoxBlockEntity extends BaseContainerBlockEntity {
-    public static final int SIZE = 14;
-    private NonNullList<ItemStack> items = NonNullList.withSize(SIZE, ItemStack.EMPTY);
+public class BoxBlockEntity extends BlockEntity {
 
     public BoxBlockEntity(BlockPos pos, BlockState state) {
         super(BOX_BLOCK_ENTITY.get(), pos, state);
-    }
-
-
-    // The container size, like before.
-    @Override
-    public int getContainerSize() {
-        return SIZE;
-    }
-
-    @Override
-    protected Component getDefaultName() {
-        return null;
-    }
-
-    // The getter for our item stack list.
-    @Override
-    protected NonNullList<ItemStack> getItems() {
-        return items;
-    }
-
-    // The setter for our item stack list.
-    @Override
-    protected void setItems(NonNullList<ItemStack> items) {
-        this.items = items;
-    }
-
-    @Override
-    protected AbstractContainerMenu createMenu(int containerId, Inventory inventory) {
-        return null;
     }
 
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITY_TYPES =
